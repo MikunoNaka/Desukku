@@ -9,7 +9,7 @@ public class GameWindow extends JFrame {
     GameWindow() {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        this.setLayout(new BorderLayout(0, 10));
+        this.setLayout(new BorderLayout(0, 5));
         this.setTitle("Pee Pee Poo Poo");
 
         this.setSize(450, 710);

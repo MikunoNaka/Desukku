@@ -17,6 +17,7 @@ public class Cell extends JButton {
         this.setBorder(new LineBorder(borderColor));
         this.setForeground(fgColor);
         this.setFocusable(false);
+        this.setFont(new Font("Helvetica", Font.PLAIN, 24));
         super.setContentAreaFilled(false);
     }
 

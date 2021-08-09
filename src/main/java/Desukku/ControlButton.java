@@ -16,7 +16,7 @@ public class ControlButton extends JButton {
         this.setBorder(new LineBorder(borderColor));
         this.setForeground(fgColor);
         this.setFocusable(false);
-        this.setFont(new Font("Source Code Pro", Font.PLAIN, 40));
+        this.setFont(new Font("Helvetica", Font.PLAIN, 40));
         super.setContentAreaFilled(false);
     }
 
