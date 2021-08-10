@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class Controls extends JPanel implements ActionListener {
     ControlButton[] buttons = new ControlButton[10];
-    private ButtonGroup controlButtonGroup = new ButtonGroup();
+    private final ButtonGroup controlButtonGroup = new ButtonGroup();
 
     Controls() {
         this.setBackground(GameWindow.bgColor);
@@ -16,12 +16,24 @@ public class Controls extends JPanel implements ActionListener {
         this.populateControls();
     }
 
+    public String selectedValue = "";
+    public void setSelectedValue(String val) {
+        selectedValue = val;
+    }
+    public String getSelectedValue() {
+        if (selectedValue.equals("X")) {
+            return "";
+        } else {
+            return selectedValue;
+        }
+    }
+
     private void populateControls() {
         buttons[9] = new ControlButton("X");
 
         // create numeric buttons
-        for (int i = 0; i<9; i++)
-            buttons[i] = new ControlButton(String.valueOf(i));
+        for (int i = 1; i<10; i++)
+            buttons[i-1] = new ControlButton(String.valueOf(i));
 
         // add buttons to panel
         for (ControlButton button : buttons) {
@@ -35,7 +47,7 @@ public class Controls extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         for (ControlButton button : buttons) {
             if (e.getSource() == button) {
-                System.out.println(button.getText());
+                setSelectedValue(button.getText());
             }
         }
     }
