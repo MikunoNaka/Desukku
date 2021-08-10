@@ -31,11 +31,34 @@ public class Grid extends JPanel implements ActionListener {
         }
     }
 
+    private String[][] getBands() {
+        String[][] bands = new String[9][9];
+
+        int count = 0;
+        for(int i=0; i<9; i++) {
+            for(int j=0; j<9; j++) {
+                if(count == 81) break;
+                bands[i][j] = cells[count].getText();
+                count++;
+            }
+        }
+
+        return bands;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         for (Cell cell : cells) {
             if (e.getSource() == cell) {
                 cell.setText(controls.getSelectedValue());
+
+                // print bands
+                for (String[] i : getBands()) {
+                    for (String j : i)
+                        System.out.print(j + " ");
+                    System.out.println();
+                }
+
             }
         }
     }
