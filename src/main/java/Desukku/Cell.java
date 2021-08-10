@@ -1,15 +1,14 @@
 package Desukku;
 
 import java.awt.*;
-// import java.awt.event.ActionEvent;
 import javax.swing.*;
 import javax.swing.border.*;
 
 public class Cell extends JButton {
-    public static Color bgColor = new Color(0x282A36);
-    public static Color fgColor = new Color(0xFFFFFF);
-    public static Color bgColorClicked = new Color(0x6E5991);
-    public static Color borderColor = new Color(0x000000);
+    private final Color bgColor = new Color(0x282A36);
+    private final Color fgColor = new Color(0xFFFFFF);
+    private final Color bgColorSelected = new Color(0x6E5991);
+    private final Color borderColor = new Color(0x000000);
 
     Cell(String val) {
         this.setText(val);
@@ -24,7 +23,7 @@ public class Cell extends JButton {
     @Override
     protected void paintComponent(Graphics g) {
         if (getModel().isPressed()) {
-            g.setColor(bgColorClicked);
+            g.setColor(bgColorSelected);
         } else if (getModel().isRollover()) {
             g.setColor(bgColor);
         } else {

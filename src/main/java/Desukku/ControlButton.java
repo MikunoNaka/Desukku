@@ -4,11 +4,11 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
-public class ControlButton extends JButton {
-    public static Color bgColor = new Color(0x282A36);
-    public static Color fgColor = new Color(0xFFFFFF);
-    public static Color bgColorClicked = new Color(0x6E5991);
-    public static Color borderColor = new Color(0x000000);
+public class ControlButton extends JToggleButton {
+    private final Color bgColor = new Color(0x282A36);
+    private final Color fgColor = new Color(0xFFFFFF);
+    private final Color bgColorSelected = new Color(0x6E5991);
+    private final Color borderColor = new Color(0x000000);
 
     ControlButton(String val) {
         this.setText(val);
@@ -22,8 +22,8 @@ public class ControlButton extends JButton {
 
     @Override
     protected void paintComponent(Graphics g) {
-        if (getModel().isPressed()) {
-            g.setColor(bgColorClicked);
+        if (getModel().isPressed() || this.isSelected()) {
+            g.setColor(bgColorSelected);
         } else if (getModel().isRollover()) {
             g.setColor(bgColor);
         } else {
