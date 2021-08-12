@@ -1,5 +1,6 @@
 package Desukku;
 
+import static Desukku.Sudoku.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -31,21 +32,6 @@ public class Grid extends JPanel implements ActionListener {
         }
     }
 
-    private String[][] getBands() {
-        String[][] bands = new String[9][9];
-
-        int count = 0;
-        for(int i=0; i<9; i++) {
-            for(int j=0; j<9; j++) {
-                if(count == 81) break;
-                bands[i][j] = cells[count].getText();
-                count++;
-            }
-        }
-
-        return bands;
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         for (Cell cell : cells) {
@@ -53,12 +39,19 @@ public class Grid extends JPanel implements ActionListener {
                 cell.setText(controls.getSelectedValue());
 
                 // print bands
-                for (String[] i : getBands()) {
+                /*for (String[] i : getBands(cells)) {
                     for (String j : i)
                         System.out.print(j + " ");
                     System.out.println();
+                }*/
+
+                for (String i : getBand(8, cells)) {
+                    System.out.println(i);
                 }
 
+                for (String i : getStack(8, cells)) {
+                    System.out.println(i);
+                }
             }
         }
     }
