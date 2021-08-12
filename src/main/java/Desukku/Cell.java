@@ -6,13 +6,17 @@ import javax.swing.border.*;
 
 public class Cell extends JToggleButton {
     private final Color bgColor = new Color(0x282A36);
-    private final Color fgColor = new Color(0xFFFFFF);
     private final Color bgColorSelected = new Color(0x6E5991);
+    private final Color bgColorHighlighted = new Color(0x5f4e7c);
     private final Color borderColor = new Color(0x000000);
+    private final Color fgColor = new Color(0xFFFFFF);
 
     private final int stackID;
     private final int bandID;
     private final int regionID;
+    // private final boolean isReadOnly;
+
+    private boolean highlighted = false;
 
     Cell(String val, int stackID, int bandID, int regionID) {
         this.setBackground(bgColor);
@@ -31,10 +35,16 @@ public class Cell extends JToggleButton {
     public int getStack() { return stackID; }
     public int getRegion() { return regionID; }
 
+    public void highlight(boolean stat) {
+        this.highlighted = stat;
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         if (getModel().isPressed() || this.isSelected()) {
             g.setColor(bgColorSelected);
+        } else if (highlighted) {
+            g.setColor(bgColorHighlighted);
         } else if (getModel().isRollover()) {
             g.setColor(bgColor);
         } else {

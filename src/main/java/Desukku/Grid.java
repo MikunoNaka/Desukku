@@ -73,6 +73,8 @@ public class Grid extends JPanel implements ActionListener {
             if (e.getSource() == cell) {
                 cell.setText(controls.getSelectedValue());
 
+                cell.highlight(true);
+
                 for (String i : getBand(8, cells)) {
                     System.out.println(i);
                 }
@@ -80,6 +82,8 @@ public class Grid extends JPanel implements ActionListener {
                 for (String i : getStack(8, cells)) {
                     System.out.println(i);
                 }
+
+                break;
             }
         }
     }
